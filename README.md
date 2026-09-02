@@ -1,6 +1,6 @@
-===========================
+=
 PROJETO CALCULADORA BÁSICA
-===========================
+=
 
 
 1. IDENTIFICAÇÃO DO ALUNO(A)
