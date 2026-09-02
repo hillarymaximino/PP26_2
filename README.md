@@ -1,4 +1,4 @@
-=
+
 PROJETO CALCULADORA BÁSICA
 =
 
