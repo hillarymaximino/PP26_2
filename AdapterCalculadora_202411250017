@@ -1,0 +1,28 @@
+public class AdapterCalculadora extends Calculadora_202411250017 implements InterfaceCalculadora {
+
+    private Calculadora_202321250008 novaCalculadora;
+
+    public AdapterCalculadora(Calculadora_202321250008 novaCalculadora) {
+        this.novaCalculadora = novaCalculadora;
+    }
+
+    @Override
+    public double somar(double a, double b) {
+        return novaCalculadora.somar(a,b);
+    }
+
+    @Override
+    public double subtrair(double a, double b) {
+        return novaCalculadora.subtrair(a,b);
+    }
+
+    @Override
+    public double multiplicar(double a, double b) {
+        return novaCalculadora.multiplicar(a,b);
+    }
+
+    @Override
+    public double dividir(double a, double b) {
+        return novaCalculadora.dividir(a,b);
+    }
+}
