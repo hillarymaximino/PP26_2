@@ -1,0 +1,22 @@
+package padroes.cor;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.err.println("Uso: java padroes.cor.Main <caminho_do_arquivo_ou_texto>");
+            System.exit(1);
+        }
+
+        // Caso o usuário passe um texto sem aspas no shell, une os argumentos com espaço
+        String entrada = String.join(" ", args);
+
+        AnalisadorTextoFacade analisador = new AnalisadorTextoFacade();
+        try {
+            analisador.analisarEntrada(entrada);
+        } catch (IOException e) {
+            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+    }
+}
