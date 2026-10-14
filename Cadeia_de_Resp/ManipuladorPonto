@@ -1,0 +1,14 @@
+package padroes.cor;
+
+public class ManipuladorPonto extends ManipuladorCaractere {
+
+    @Override
+    protected boolean deveContar(char c) {
+        return c == '.';
+    }
+
+    @Override
+    protected String getNomeEstatistica() {
+        return "c) Número de pontos encontrados";
+    }
+}
