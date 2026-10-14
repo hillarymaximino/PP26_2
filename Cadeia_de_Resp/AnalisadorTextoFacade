@@ -1,0 +1,42 @@
+package padroes.cor;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class AnalisadorTextoFacade {
+    private final ManipuladorCaractere cabecaDaCorrente;
+
+    public AnalisadorTextoFacade() {
+        ManipuladorCaractere eloEspaco = new ManipuladorEspaco();
+        ManipuladorCaractere eloLetraA = new ManipuladorLetraA();
+        ManipuladorCaractere eloPonto = new ManipuladorPonto();
+
+        eloEspaco.setProximo(eloLetraA).setProximo(eloPonto);
+
+        this.cabecaDaCorrente = eloEspaco;
+    }
+
+    public void analisarEntrada(String entrada) throws IOException {
+        Path possivelArquivo = Paths.get(entrada);
+        String textoParaAnalise;
+
+        if (Files.exists(possivelArquivo) && Files.isRegularFile(possivelArquivo)) {
+            System.out.println("Lendo arquivo: " + possivelArquivo.toAbsolutePath());
+            textoParaAnalise = Files.readString(possivelArquivo, StandardCharsets.UTF_8);
+        } else {
+            System.out.println("Analisando texto recebido diretamente via linha de comando.");
+            textoParaAnalise = entrada;
+        }
+
+        for (char c : textoParaAnalise.toCharArray()) {
+            cabecaDaCorrente.processar(c);
+        }
+
+        System.out.println("\n=== ESTATÍSTICAS DO TEXTO ===");
+        cabecaDaCorrente.exibirRelatorio();
+        System.out.println("=============================");
+    }
+}
