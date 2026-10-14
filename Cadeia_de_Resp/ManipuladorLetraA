@@ -1,0 +1,16 @@
+package padroes.cor;
+
+public class ManipuladorLetraA extends ManipuladorCaractere {
+
+    @Override
+    protected boolean deveContar(char c) {
+        char minusculo = Character.toLowerCase(c);
+        return minusculo == 'a' || minusculo == 'á' ||
+                minusculo == 'à' || minusculo == 'â' || minusculo == 'ã';
+    }
+
+    @Override
+    protected String getNomeEstatistica() {
+        return "b) Número de letras 'a' encontradas";
+    }
+}
